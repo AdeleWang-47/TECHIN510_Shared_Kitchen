@@ -57,8 +57,8 @@ This project aims to build a secure and user-friendly reservation platform for a
 
 ##  Team Contact  
 - **Client**: Adele
-- **Email:** [your.email@example.com]  
-
+- **Email:** zxadele.wang@gmail.com
+  
 - **Developer**: Yourong
 - **Email:** yourongxu0520@gmail.com
 
