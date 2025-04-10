@@ -3,13 +3,11 @@
 ## Project Scope  
 This project aims to build a secure and user-friendly reservation platform for a shared kitchen space in a cancer hospital. The platform allows patients and their families to view kitchen spot availability and book time slots for self-cooking, addressing the lack of suitable dining options for individuals with special dietary needs. It also ensures privacy, accessibility, and compliance with healthcare data standards.
 
----
 
 ## Target Users  
 - **Primary Users:**  
   Outpatient and inpatient families with special nutritional requirements, particularly cancer patients who need to cook or eat custom meals.
 
----
 
 ## Features  
 
