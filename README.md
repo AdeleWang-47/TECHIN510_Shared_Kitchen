@@ -9,17 +9,23 @@ This project aims to build a secure and user-friendly reservation platform for a
   Outpatient and inpatient families with special nutritional requirements, particularly cancer patients who need to cook or eat custom meals.
 
 
-## Features  
+## Features
 
 ### Core Features:
-- **Dashboard:**  
-  View the real-time availability of cooking spots using a kitchen layout and weekly overview.
 
-- **Reservation System:**  
-  Book specific times and spots through a simple, step-by-step flow (login → choose time/spot → confirmation).
+- **Homepage:**
+  - View current availability of cooking spots
+  - Check reservation availability
+  - Browse weekly reservation calendar
 
-- **Personal Reservation Management:**  
-  Users can view, modify, or cancel their bookings.
+- **Reservation System:**
+  - Login to access reservation features
+  - Reserve a cooking spot
+  - Make payments for bookings
+
+- **Personal Account:**
+  - Manage current reservations
+  - View reservation history
 
 ### Planned / Nice-to-Have Features:
 - **User Authentication:**  
