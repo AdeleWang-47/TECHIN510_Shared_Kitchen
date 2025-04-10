@@ -28,7 +28,6 @@ This project aims to build a secure and user-friendly reservation platform for a
 - **Notifications:**  
   Booking confirmations and optional reminders.
 
----
 
 ## Timeline  
 
@@ -51,7 +50,6 @@ This project aims to build a secure and user-friendly reservation platform for a
 - Supporting users with low technical proficiency  
 - Resolving frontend-backend integration issues
 
----
 
 ##  Team Contact  
 - **Client**: Adele
