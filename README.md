@@ -64,12 +64,6 @@ This project aims to build a secure and user-friendly reservation platform for a
 - **Developer**: Yourong
 - **Email:** yourongxu0520@gmail.com
 
-##  Virtual Environment 
-- Step 1: Create a virtual environment
+##  Progress
 
-python3 -m venv .venv
-
-- Step 2: Activate the virtual environment (for macOS/Linux)
-
-source .venv/bin/activate
-
+- 20250418: created the homepage version1
