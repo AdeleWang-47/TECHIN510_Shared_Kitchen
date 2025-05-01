@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital KitchenShare - Shared Kitchen Reservation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-teal-600">Hospital KitchenShare</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-teal-600">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-teal-600">About</a>
+                    <a href="#" class="text-gray-700 hover:text-teal-600">Contact</a>
+                    <a href="#" class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-teal-900 h-[400px]">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                 class="w-full h-full object-cover opacity-40" alt="Hospital Kitchen">
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Welcome to Hospital KitchenShare
+            </h1>
+            <p class="mt-6 text-xl text-white max-w-3xl">
+                A safe and comfortable space for patients and families to prepare nutritious meals during their hospital stay.
+            </p>
+        </div>
+    </div>
+
+    <!-- Real-time Dashboard -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Kitchen Availability</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Kitchen Spot 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 1</h3>
+                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Available</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Current Status: <span class="font-medium text-green-600">Available</span></p>
+                    <p class="text-gray-600">Next Available: <span class="font-medium">Now</span></p>
+                    <button class="w-full bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors">
+                        Reserve Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kitchen Spot 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 2</h3>
+                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">In Use</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Current User: <span class="font-medium">Sarah Johnson</span></p>
+                    <p class="text-gray-600">Time Remaining: <span class="font-medium">45 minutes</span></p>
+                    <p class="text-gray-600">End Time: <span class="font-medium">2:30 PM</span></p>
+                </div>
+            </div>
+
+            <!-- Kitchen Spot 3 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 3</h3>
+                    <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">Reserved</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Reserved By: <span class="font-medium">Michael Chen</span></p>
+                    <p class="text-gray-600">Start Time: <span class="font-medium">3:00 PM</span></p>
+                    <p class="text-gray-600">Duration: <span class="font-medium">1 hour</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose Hospital KitchenShare?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 text-center">
+                    <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Safe & Sanitized</h3>
+                    <p class="text-gray-600">Regular cleaning and sanitization protocols ensure a safe cooking environment.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 text-center">
+                    <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-wheelchair text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Accessible Design</h3>
+                    <p class="text-gray-600">Wheelchair-accessible spaces and easy-to-use equipment for all users.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 text-center">
+                    <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Nutritional Support</h3>
+                    <p class="text-gray-600">Resources and guidance for preparing nutritious, healing meals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hospital KitchenShare</h4>
+                    <p class="text-gray-400">Providing a comfortable space for patients and families to prepare nutritious meals during their hospital stay.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400">Email: support@hospitalkitchenshare.com</p>
+                    <p class="text-gray-400">Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 Hospital KitchenShare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
