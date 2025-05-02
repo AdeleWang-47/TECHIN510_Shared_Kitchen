@@ -68,7 +68,7 @@ This project aims to build a secure and user-friendly reservation platform for a
 
 - 20250418: created the homepage version1
 - 20250425: discussed about the future features
-## Progress
+## Meeting Notes
 
 - **20250418**: created the homepage version 1
 - **20250425**: discussed future features
