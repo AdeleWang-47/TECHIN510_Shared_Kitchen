@@ -69,6 +69,7 @@ This project aims to build a secure and user-friendly reservation platform for a
 - 20250418: created the homepage version1
 - 20250425: discussed about the future features
 - 20250502: created 3 main features
+- 20250516: completed all features
 
   
 ## Meeting Notes
@@ -78,4 +79,7 @@ This project aims to build a secure and user-friendly reservation platform for a
 - **20250502**: checked current progress  
   -  Code: approved by the client  
   -  Improvement: the reservation logic has some problems, needs improvement
+- **20250516**: checked current progress  
+  -  Code: approved by the client  
+  -  Improvement: the overall reservation logic needs to be improved
 
