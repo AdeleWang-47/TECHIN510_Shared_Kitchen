@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Healing Kitchen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-container {
+            transition: transform 0.25s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-teal-100">
+        <div class="container-main max-w-3xl mx-auto px-4 py-16 text-center" style="transition: opacity 1s ease-out;">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <div class="mb-8">
+                    <i class="fas fa-utensils text-5xl text-teal-600"></i>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-6">Welcome to the Healing Kitchen! 🍳</h1>
+                <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+                    We're so glad you're here.<br><br>
+                    This shared kitchen is a cozy, safe space for patients and families to prepare meals with love, care, and confidence. Whether you're cooking for special dietary needs or simply seeking a sense of home during your stay, you've got a place here. 👩‍🍳👨‍🍳
+                </p>
+                
+                <!-- Access Options Container -->
+                <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-center mb-8">
+                    <!-- Sign In Button -->
+                    <button onclick="showModal('signin-modal')" class="bg-teal-600 text-white text-lg font-semibold px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-200 shadow-md hover:shadow-lg flex items-center justify-center">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                    </button>
+                    
+                    <!-- Sign Up Button -->
+                    <button onclick="showModal('signup-modal')" class="bg-teal-500 text-white text-lg font-semibold px-6 py-3 rounded-lg hover:bg-teal-600 transition-colors duration-200 shadow-md hover:shadow-lg flex items-center justify-center">
+                        <i class="fas fa-user-plus mr-2"></i>Sign Up
+                    </button>
+                    
+                    <!-- Guest Access Button -->
+                    <button onclick="guestAccess()" class="bg-white border-2 border-teal-600 text-teal-600 text-lg font-semibold px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors duration-200 shadow-md hover:shadow-lg flex items-center justify-center">
+                        <i class="fas fa-user mr-2"></i>Continue as Guest
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div id="signin-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-50 overflow-y-auto transform scale-95">
+            <div class="modal-content py-6 px-8">
+                <div class="flex justify-between items-center pb-4 border-b">
+                    <h3 class="text-2xl font-bold text-teal-600">Sign In</h3>
+                    <button class="modal-close cursor-pointer z-50" onclick="closeModal('signin-modal')">
+                        <i class="fas fa-times text-gray-500 hover:text-gray-700"></i>
+                    </button>
+                </div>
+                
+                <form class="pt-6 pb-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="signin-email">
+                            Email
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signin-email" type="email" placeholder="Email">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="signin-password">
+                            Password
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="signin-password" type="password" placeholder="Password">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="handleSignIn()">
+                            Sign In
+                        </button>
+                        <a class="inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-800" href="#" onclick="forgotPassword()">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signup-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-50 overflow-y-auto transform scale-95">
+            <div class="modal-content py-6 px-8">
+                <div class="flex justify-between items-center pb-4 border-b">
+                    <h3 class="text-2xl font-bold text-teal-600">Sign Up</h3>
+                    <button class="modal-close cursor-pointer z-50" onclick="closeModal('signup-modal')">
+                        <i class="fas fa-times text-gray-500 hover:text-gray-700"></i>
+                    </button>
+                </div>
+                
+                <form class="pt-6 pb-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-name">
+                            Full Name
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signup-name" type="text" placeholder="Full Name">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-email">
+                            Email
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signup-email" type="email" placeholder="Email">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-password">
+                            Password
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signup-password" type="password" placeholder="Password">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-confirm-password">
+                            Confirm Password
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="signup-confirm-password" type="password" placeholder="Confirm Password">
+                    </div>
+                    <div class="mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600" checked>
+                            <span class="ml-2 text-sm text-gray-700">I agree to the <a href="#" class="text-teal-600 hover:underline">terms and conditions</a></span>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="button" onclick="handleSignUp()">
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Functions for modal control
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('.modal-container').classList.remove('scale-95');
+            modal.querySelector('.modal-container').classList.add('scale-100');
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('.modal-container').classList.remove('scale-100');
+            modal.querySelector('.modal-container').classList.add('scale-95');
+        }
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(function(modal) {
+                if (event.target === modal.querySelector('.modal-overlay')) {
+                    const modalId = modal.getAttribute('id');
+                    closeModal(modalId);
+                }
+            });
+        });
+        
+        // Function for fade transition to kitchen page
+        function navigateWithDelay() {
+            const container = document.querySelector('.container-main');
+            container.classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = 'hospital-kitchen-0516.html';
+            }, 1000);
+        }
+        
+        // Handle guest access
+        function guestAccess() {
+            // You would typically set a guest session here
+            console.log('Accessing as guest');
+            navigateWithDelay();
+        }
+        
+        // Handle sign in
+        function handleSignIn() {
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            
+            // Here you would typically authenticate the user
+            console.log('Signing in with:', email);
+            
+            // For demo purpose, just redirect
+            closeModal('signin-modal');
+            navigateWithDelay();
+        }
+        
+        // Handle sign up
+        function handleSignUp() {
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            
+            // Here you would typically register the user
+            console.log('Signing up:', name, email);
+            
+            // For demo purpose, just redirect
+            closeModal('signup-modal');
+            navigateWithDelay();
+        }
+        
+        // Handle forgot password
+        function forgotPassword() {
+            alert('Password reset link sent to your email!');
+            closeModal('signin-modal');
+        }
+    </script>
+</body>
+</html>
