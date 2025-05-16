@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations - Hospital KitchenShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="hospital-kitchen-0516.html" class="text-2xl font-bold text-teal-600">Hospital KitchenShare</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="hospital-kitchen-0516.html" class="text-gray-700 hover:text-teal-600">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-teal-600">About</a>
+                    <a href="#" class="text-gray-700 hover:text-teal-600">Contact</a>
+                    <a href="history.html" class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-600 hover:bg-teal-700 transition-colors" title="History">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-7 h-7">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5a7.5 7.5 0 1115 0v.75a.75.75 0 01-.75.75h-13.5a.75.75 0 01-.75-.75V19.5z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-teal-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold">My Reservations</h1>
+            <p class="mt-2 text-teal-100">View and manage your kitchen spot reservations</p>
+        </div>
+    </div>
+
+    <!-- Tabs Section -->
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        <div class="border-b border-gray-200">
+            <nav class="flex -mb-px">
+                <a href="#" class="border-teal-500 text-teal-600 group inline-flex items-center py-4 px-6 border-b-2 font-medium text-sm">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>Upcoming</span>
+                </a>
+                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-6 border-b-2 font-medium text-sm">
+                    <i class="fas fa-history mr-2"></i>
+                    <span>Past Reservations</span>
+                </a>
+                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-6 border-b-2 font-medium text-sm">
+                    <i class="fas fa-ban mr-2"></i>
+                    <span>Cancelled</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Upcoming Reservations Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Upcoming Reservations</h2>
+            
+            <!-- Reservation Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4 border-l-4 border-teal-500">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 3</h3>
+                            <span class="ml-3 px-3 py-1 rounded-full text-sm font-medium bg-teal-100 text-teal-800">Confirmed</span>
+                        </div>
+                        <p class="text-gray-600 mt-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            Tomorrow, May 13, 2025
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            <i class="far fa-clock mr-2"></i>
+                            10:00 AM - 11:30 AM (1.5 hours)
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Modify
+                        </button>
+                        <button class="px-4 py-2 bg-white border border-red-300 rounded-md text-sm font-medium text-red-700 hover:bg-red-50">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reservation Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4 border-l-4 border-teal-500">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 1</h3>
+                            <span class="ml-3 px-3 py-1 rounded-full text-sm font-medium bg-teal-100 text-teal-800">Confirmed</span>
+                        </div>
+                        <p class="text-gray-600 mt-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            Friday, May 16, 2025
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            <i class="far fa-clock mr-2"></i>
+                            3:00 PM - 4:00 PM (1 hour)
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Modify
+                        </button>
+                        <button class="px-4 py-2 bg-white border border-red-300 rounded-md text-sm font-medium text-red-700 hover:bg-red-50">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Reservations Section -->
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Past Reservations</h2>
+            
+            <!-- Reservation Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4 border-l-4 border-gray-300">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 2</h3>
+                            <span class="ml-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">Completed</span>
+                        </div>
+                        <p class="text-gray-600 mt-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            May 5, 2025
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            <i class="far fa-clock mr-2"></i>
+                            1:00 PM - 2:30 PM (1.5 hours)
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-white border border-teal-300 rounded-md text-sm font-medium text-teal-700 hover:bg-teal-50">
+                            Book Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reservation Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4 border-l-4 border-gray-300">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 1</h3>
+                            <span class="ml-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">Completed</span>
+                        </div>
+                        <p class="text-gray-600 mt-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            April 28, 2025
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            <i class="far fa-clock mr-2"></i>
+                            9:00 AM - 10:00 AM (1 hour)
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-white border border-teal-300 rounded-md text-sm font-medium text-teal-700 hover:bg-teal-50">
+                            Book Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reservation Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4 border-l-4 border-gray-300">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-xl font-semibold text-gray-900">Kitchen Spot 3</h3>
+                            <span class="ml-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">Completed</span>
+                        </div>
+                        <p class="text-gray-600 mt-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            April 17, 2025
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            <i class="far fa-clock mr-2"></i>
+                            4:30 PM - 5:30 PM (1 hour)
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-white border border-teal-300 rounded-md text-sm font-medium text-teal-700 hover:bg-teal-50">
+                            Book Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Reservations Fallback (Hidden by default) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 hidden">
+        <div class="text-center py-12 bg-white rounded-lg shadow-md">
+            <div class="inline-block p-6 bg-teal-100 rounded-full mb-6">
+                <i class="fas fa-calendar-alt text-4xl text-teal-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">No Reservations Found</h3>
+            <p class="text-gray-600 mb-6 max-w-md mx-auto">
+                You don't have any kitchen reservations yet. Start by booking a kitchen spot to prepare your nutritious meals.
+            </p>
+            <a href="hospital-kitchen-0516.html" class="inline-block px-6 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors">
+                Book a Kitchen Spot
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hospital KitchenShare</h4>
+                    <p class="text-gray-400">Providing a comfortable space for patients and families to prepare nutritious meals during their hospital stay.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400">Email: support@hospitalkitchenshare.com</p>
+                    <p class="text-gray-400">Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 Hospital KitchenShare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
