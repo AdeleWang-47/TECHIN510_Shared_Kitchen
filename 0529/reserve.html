@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Kitchen Spot - Hospital KitchenShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 使用更美观的Flatpickr主题 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_teal.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* 美化日期选择器的自定义样式 */
+        .date-input-container, .time-input-container {
+            position: relative;
+        }
+        
+        .date-input-container i, .time-input-container i {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0d9488;
+            pointer-events: none;
+        }
+        
+        /* 美化日期选择器内部元素 */
+        .flatpickr-day.selected {
+            background: #0d9488 !important;
+            border-color: #0d9488 !important;
+        }
+        
+        .flatpickr-day.today {
+            border-color: #0d9488 !important;
+        }
+        
+        .flatpickr-day:hover {
+            background: #e6fffa !important;
+            color: #0d9488 !important;
+        }
+        
+        /* 动画效果 */
+        .date-input, .time-input {
+            transition: all 0.3s ease;
+        }
+        
+        .date-input:focus, .time-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* 美化时间槽卡片 */
+        .time-slot {
+            transition: all 0.2s ease;
+        }
+        
+        .time-slot:hover {
+            transform: translateY(-2px);
+        }
+        
+        .time-slot-available {
+            background: linear-gradient(145deg, #e6fffa, #d1faf1);
+            border-left: 4px solid #0d9488;
+        }
+        
+        .time-slot-booked {
+            background: linear-gradient(145deg, #fee2e2, #fecaca);
+            border-left: 4px solid #dc2626;
+        }
+        
+        /* 美化日历表头（月份和年份选择） */
+        .flatpickr-months {
+            background: #fff !important;
+            border-radius: 12px 12px 0 0 !important;
+            box-shadow: none !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 0 !important;
+        }
+        .flatpickr-month {
+            background: transparent !important;
+            color: #222 !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            border-radius: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flatpickr-current-month {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 0;
+            transform: translateX(-20px);
+            margin-right: 0 !important;
+        }
+        .flatpickr-monthDropdown-months {
+            background: transparent !important;
+            color: #0d9488 !important;
+            border: none !important;
+            border-radius: 0 !important;
+            font-size: 1rem !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 500 !important;
+            padding: 0 !important;
+            margin: 0 2px !important;
+            box-shadow: none !important;
+            outline: none !important;
+            appearance: none !important;
+            transition: none;
+        }
+        /* 隐藏右侧箭头 */
+        .flatpickr-next-month {
+            display: none !important;
+        }
+        /* 月份和年份字体与星期一致 */
+        .flatpickr-current-month, .flatpickr-monthDropdown-months, .flatpickr-year {
+            font-size: 1rem !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+            color: #0d9488 !important;
+            line-height: 1.2 !important;
+        }
+        .flatpickr-year {
+            margin-left: 8px !important;
+        }
+        /* 月份和年份组合体完全居中且左右间距一致 */
+        .flatpickr-current-month {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 0;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .flatpickr-months {
+            margin-bottom: 16px !important;
+            padding-top: 20px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 美化时间选择器弹窗UI，去除高亮背景和描边，仅主色文字，hover无灰色 */
+        .flatpickr-time input, .flatpickr-time .flatpickr-am-pm {
+            background: #fff !important;
+            color: #0d9488 !important;
+            border: none !important;
+            font-size: 1.1rem !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+            padding: 6px 12px !important;
+            text-align: center !important;
+            min-width: 36px !important;
+            min-height: 36px !important;
+            box-sizing: border-box !important;
+            transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .flatpickr-time input:focus, .flatpickr-time .flatpickr-am-pm:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            border: none !important;
+            background: #fff !important;
+            color: #0d9488 !important;
+        }
+        .flatpickr-time .numInputWrapper input.selected {
+            background: #fff !important;
+            color: #0d9488 !important;
+            border: none !important;
+        }
+        .flatpickr-time .numInputWrapper input:active {
+            background: #fff !important;
+        }
+        .flatpickr-time .numInputWrapper input:hover {
+            background: #fff !important;
+        }
+        .flatpickr-time .numInputWrapper {
+            border-radius: 8px !important;
+            overflow: hidden;
+        }
+        .flatpickr-time .numInputWrapper span.arrowUp,
+        .flatpickr-time .numInputWrapper span.arrowDown {
+            color: #0d9488 !important;
+        }
+        /* 保留输入时的竖线光标 */
+        .flatpickr-time input::selection {
+            background: #b2f5ea !important;
+            color: #0d9488 !important;
+        }
+        /* Duration按钮选中与主按钮一致 */
+        .duration-btn.selected, .duration-btn:focus {
+            background: #0d9488 !important;
+            color: #fff !important;
+            border: 2px solid #0d9488 !important;
+            box-shadow: 0 2px 8px rgba(13,148,136,0.08);
+        }
+        .duration-btn {
+            border: 2px solid #d1d5db;
+            background: #fff;
+            color: #222;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="hospital-kitchen-0516.html" class="text-2xl font-bold text-teal-600 hover:text-teal-700 transition-colors cursor-pointer">Hospital KitchenShare</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="hospital-kitchen-0516.html" class="text-gray-700 hover:text-teal-600 transition-colors duration-200 cursor-pointer">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Kitchen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Reservation Form -->
+    <div class="max-w-3xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-lg shadow-lg p-8 border-t-4 border-teal-500">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Reserve Kitchen Spot</h1>
+            
+            <form id="reservationForm" class="space-y-6">
+                <!-- Date Selection -->
+                <div>
+                    <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Select Date</label>
+                    <div class="date-input-container">
+                        <input type="text" id="date" name="date" class="date-input w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 pr-10" placeholder="Select date">
+                        <i class="fas fa-calendar-alt text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Time Selection -->
+                <div>
+                    <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Select Time</label>
+                    <div class="time-input-container">
+                        <input type="text" id="time" name="time" class="time-input w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 pr-10" placeholder="Select time">
+                        <i class="fas fa-clock text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Duration Selection -->
+                <div>
+                    <label for="duration" class="block text-sm font-medium text-gray-700 mb-2">Duration</label>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" class="duration-btn px-5 py-2.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-teal-50 transition-all duration-200" data-value="30">30 min</button>
+                        <button type="button" class="duration-btn px-5 py-2.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-teal-50 transition-all duration-200" data-value="60">1 hour</button>
+                        <button type="button" class="duration-btn px-5 py-2.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-teal-50 transition-all duration-200" data-value="90">1.5 hours</button>
+                        <button type="button" class="duration-btn px-5 py-2.5 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-teal-50 transition-all duration-200" data-value="120">2 hours</button>
+                    </div>
+                    <input type="hidden" id="duration" name="duration" value="60">
+                </div>
+
+                <!-- Additional Notes -->
+                <div>
+                    <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">Additional Notes (Optional)</label>
+                    <textarea id="notes" name="notes" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200" placeholder="Any dietary requirements or special requests?"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-all duration-200 transform hover:-translate-y-1 shadow-md hover:shadow-lg">
+                        <i class="fas fa-check-circle mr-2"></i>Confirm Reservation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 自定义的Flatpickr日期选择器配置
+        flatpickr("#date", {
+            minDate: "today",
+            maxDate: new Date().fp_incr(30), // 允许预订未来30天
+            dateFormat: "Y-m-d",
+            disableMobile: "true", // 在移动设备上保持一致外观
+            showMonths: 1,
+            animate: true,
+            // 添加月份切换按钮的自定义图标
+            prevArrow: '<i class="fas fa-chevron-left"></i>',
+            nextArrow: '<i class="fas fa-chevron-right"></i>',
+            // 添加日历打开和关闭的动画效果
+            onOpen: function(selectedDates, dateStr, instance) {
+                instance.calendarContainer.classList.add('animate-fadeIn');
+            },
+            onClose: function(selectedDates, dateStr, instance) {
+                instance.calendarContainer.classList.add('animate-fadeOut');
+            }
+        });
+
+        // 自定义的Flatpickr时间选择器配置
+        flatpickr("#time", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            minTime: "09:00",
+            maxTime: "21:00",
+            minuteIncrement: 30,
+            disableMobile: "true", // 在移动设备上保持一致外观
+            // 为了更好的用户体验，添加时间选择的额外配置
+            time_24hr: false,
+            // 添加时间选择器打开和关闭的动画效果
+            onOpen: function(selectedDates, dateStr, instance) {
+                instance.calendarContainer.classList.add('animate-fadeIn');
+            },
+            onClose: function(selectedDates, dateStr, instance) {
+                instance.calendarContainer.classList.add('animate-fadeOut');
+            }
+        });
+
+        // 处理表单提交
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 这里通常会将数据发送到后端
+            const formData = {
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                duration: document.getElementById('duration').value,
+                notes: document.getElementById('notes').value
+            };
+
+            // 提交后的反馈
+            alert('Reservation submitted successfully!\n\nDate: ' + formData.date + '\nTime: ' + formData.time + '\nDuration: ' + formData.duration + ' minutes');
+            
+            // 重定向回厨房页面
+            window.location.href = 'hospital-kitchen-0516.html';
+        });
+
+        // 持续时间按钮组逻辑
+        document.querySelectorAll('.duration-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.getElementById('duration').value = btn.getAttribute('data-value');
+                document.querySelectorAll('.duration-btn').forEach(function(b) {
+                    b.classList.remove('selected');
+                });
+                btn.classList.add('selected');
+            });
+        });
+        
+        // 点击时间槽自动填充表单
+        document.querySelectorAll('.time-slot-available').forEach(function(slot) {
+            slot.addEventListener('click', function() {
+                // 获取时间槽文本并解析
+                const timeText = this.querySelector('span').textContent;
+                const startTime = timeText.split(' - ')[0];
+                
+                // 今天的日期
+                const today = new Date();
+                const formattedDate = today.getFullYear() + '-' + 
+                                     String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                                     String(today.getDate()).padStart(2, '0');
+                
+                // 填充表单
+                document.getElementById('date').value = formattedDate;
+                
+                // 将AM/PM时间转换为24小时制
+                let timeForPicker = startTime;
+                if (startTime.includes('AM') || startTime.includes('PM')) {
+                    const timeParts = startTime.replace(' AM', '').replace(' PM', '').split(':');
+                    let hours = parseInt(timeParts[0]);
+                    const minutes = timeParts[1] || '00';
+                    
+                    if (startTime.includes('PM') && hours < 12) {
+                        hours += 12;
+                    }
+                    if (startTime.includes('AM') && hours === 12) {
+                        hours = 0;
+                    }
+                    
+                    timeForPicker = String(hours).padStart(2, '0') + ':' + minutes;
+                }
+                
+                document.getElementById('time').value = timeForPicker;
+                
+                // 突出显示所选时间槽
+                document.querySelectorAll('.time-slot').forEach(s => {
+                    s.classList.remove('ring-2', 'ring-teal-500');
+                });
+                this.classList.add('ring-2', 'ring-teal-500');
+            });
+        });
+    </script>
+</body>
+</html>
