@@ -82,4 +82,8 @@ This project aims to build a secure and user-friendly reservation platform for a
 - **20250516**: checked current progress  
   -  Code: approved by the client  
   -  Improvement: the overall reservation logic needs to be improved
+- **20250530**: final check
+  -  What features are complete: 1. kitchen introduction; 2.reserve system; 3. reservation history page
+  -  Outstanding items: reservation system is convenient and obvious for users
+  -  Whether the project meets your original goal: Yes, main features are satisfied.
 
